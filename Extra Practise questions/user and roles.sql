@@ -42,9 +42,6 @@ CREATE TABLE usersRoles (
   UNIQUE(userid,roleid)
 );
 
-select * from users
-select * from roles
-
 -- The statements below should pass.
 INSERT INTO usersRoles(userId, roleId) VALUES(1, 1);
 INSERT INTO usersRoles(userId, roleId) VALUES(1, 2);
@@ -55,3 +52,13 @@ INSERT INTO usersRoles(userId, roleId) VALUES(2, NULL);
 
 --statemnt shud fail
 INSERT INTO usersRoles(userId, roleId) VALUES(NULL, 1);
+
+select * from users
+select * from roles
+select * from usersRoles
+
+select u.userName,r.role
+from users u
+right join usersRoles ur on ur.userId = u.id
+inner join Roles r on ur.roleId = r.id
+
